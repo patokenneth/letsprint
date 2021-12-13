@@ -11,11 +11,12 @@ namespace letsprint.DAL
     {
         public PrintContext(DbContextOptions options) : base(options)
         {
-
+        
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+           
             builder.Entity<Order>().HasKey(k => k.OrderID);
             builder.Entity<OrderDetails>().HasKey(k => k.ItemID);
         }

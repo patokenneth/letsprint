@@ -9,7 +9,7 @@ namespace letsprint.Infrastructure.Interface
 {
     public interface IOrder
     {
-        Task<string> CreateItem(CreateOrderViewModel[] order);
-        OrderDetailsViewModel ViewOrder(string OrderID);
+        Task<int> CreateItem(CreateOrderViewModel[] order);
+        OrderDetailsViewModel ViewOrder(int OrderID);
     }
 }

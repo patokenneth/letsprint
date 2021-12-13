@@ -21,15 +21,19 @@ namespace letsprint.Controllers
         }
 
         [HttpGet(template: "{OrderID}", Name = "GetByID")]
-        public IActionResult GetOrderByID(string OrderID)
+        public IActionResult GetOrderByID(int OrderID)
         {
-            if (string.IsNullOrEmpty(OrderID))
+            if (OrderID < 0)
             {
-                return BadRequest(new { message = "OrderID cannot be empty"});
+                return BadRequest(new { message = "Enter a valid OrderID"});
             }
 
             var orderdetails = _orderRepo.ViewOrder(OrderID);
 
+            if (orderdetails == null)
+            {
+                return NotFound();
+            }
             return Ok(orderdetails);
         }
 
@@ -41,7 +45,12 @@ namespace letsprint.Controllers
             {
                 var orderid = await _orderRepo.CreateItem(order);
 
-                if (orderid == string.Empty)
+                if (orderid == -1)
+                {
+                    return UnprocessableEntity(new { message = "Product type value must be between 0 and 4 and Quantity must be greater than 0."});
+                }
+
+                if (orderid == -200)
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, "Something went wrong");
                 }
