@@ -22,13 +22,21 @@ namespace letsprint.Infrastructure.Repository
         }
 
         
-        public async Task<string> CreateItem(CreateOrderViewModel[] order)
+        public async Task<int> CreateItem(CreateOrderViewModel[] order)
         {
             using (var transaction = _dbcontext.Database.BeginTransaction())
             {
                 try
                 {
-                    //we create the order object to provide a unique id for all the items selected
+                    //check that product type is defined and quantity is greater than zero
+
+                    if (order.Any(o => !Enum.IsDefined(typeof(ProductType), o.ProductType)) || order.Any(o => o.Quantity <= 0))
+                    {
+                        return -1;
+                    }
+
+                    //first, I created an order record to provide a unique common id for all the items selected
+
                     Order neworder = new() {DateofOrder = DateTime.Now };
                     _dbcontext.orders.Add(neworder);
 
@@ -60,21 +68,19 @@ namespace letsprint.Infrastructure.Repository
                 {
                     //log exception message if logging is enabled
 
-                    //rollback transaction to maintain db integrity
+                    //if something fails, rollback transaction to maintain db integrity
                     transaction.Rollback();
-                    return string.Empty;
+                    return -200;
                     
                 }
                 
             }
 
-           
-            
         }
 
-        public OrderDetailsViewModel ViewOrder(string OrderID)
+        public OrderDetailsViewModel ViewOrder(int OrderID)
         {
-            //check if there is an order with the given OrderID
+            //check if there is an order record with the given OrderID
 
             if (!_dbcontext.orders.Any(O => O.OrderID == OrderID))
             {
@@ -94,10 +100,10 @@ namespace letsprint.Infrastructure.Repository
                 }
 
                 var requiredBinWidth = AllOrderItems.Sum(b => b.RequiredBinWidth) + "mm";
+
                 //return the orders with the required bin width
                 return AllOrderItems.Select(a => new OrderDetailsViewModel { orders = orderdeets, RequiredBinWith = requiredBinWidth}).FirstOrDefault();
 
-                //return itemsReturned;
             }
             
             

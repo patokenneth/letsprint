@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace letsprint.Migrations
 {
-    public partial class initial : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,7 +11,9 @@ namespace letsprint.Migrations
                 name: "orders",
                 columns: table => new
                 {
-                    OrderID = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    OrderID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DateofOrder = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -21,28 +24,28 @@ namespace letsprint.Migrations
                 name: "orderdetails",
                 columns: table => new
                 {
-                    OrderID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ItemID = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ProductType = table.Column<int>(type: "int", nullable: false),
+                    ItemID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     RequiredBinWidth = table.Column<double>(type: "float", nullable: false),
-                    OrderID1 = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    OrderID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_orderdetails", x => x.OrderID);
+                    table.PrimaryKey("PK_orderdetails", x => x.ItemID);
                     table.ForeignKey(
-                        name: "FK_orderdetails_orders_OrderID1",
-                        column: x => x.OrderID1,
+                        name: "FK_orderdetails_orders_OrderID",
+                        column: x => x.OrderID,
                         principalTable: "orders",
                         principalColumn: "OrderID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_orderdetails_OrderID1",
+                name: "IX_orderdetails_OrderID",
                 table: "orderdetails",
-                column: "OrderID1");
+                column: "OrderID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

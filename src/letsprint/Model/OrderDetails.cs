@@ -10,8 +10,8 @@ namespace letsprint.Model
 {
     public class OrderDetails
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string ItemID { get; set; } = Guid.NewGuid().ToString();
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ItemID { get; set; }
 
         [StringLength(50)]
         public string ProductType { get; set; }
@@ -20,7 +20,7 @@ namespace letsprint.Model
 
         public double RequiredBinWidth { get; set; }
 
-        public string OrderID { get; set; }
+        public int OrderID { get; set; }
 
         public Order Order { get; set; }
     }

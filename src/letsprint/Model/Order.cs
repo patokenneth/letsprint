@@ -10,8 +10,8 @@ namespace letsprint.Model
 {
     public class Order
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public string OrderID { get; set; } = Guid.NewGuid().ToString();
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int OrderID { get; set; }
 
         public DateTime DateofOrder { get; set; }
 

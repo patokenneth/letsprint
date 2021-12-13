@@ -21,8 +21,10 @@ namespace letsprint.Migrations
 
             modelBuilder.Entity("letsprint.Model.Order", b =>
                 {
-                    b.Property<string>("OrderID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("OrderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("DateofOrder")
                         .HasColumnType("datetime2");
@@ -34,14 +36,17 @@ namespace letsprint.Migrations
 
             modelBuilder.Entity("letsprint.Model.OrderDetails", b =>
                 {
-                    b.Property<string>("ItemID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
-                    b.Property<string>("OrderID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("OrderID")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProductType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -60,7 +65,9 @@ namespace letsprint.Migrations
                 {
                     b.HasOne("letsprint.Model.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("OrderID");
+                        .HasForeignKey("OrderID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Order");
                 });
