@@ -35,14 +35,14 @@ namespace letsprint.Infrastructure.Repository
                         return -1;
                     }
 
-                    //first, I created an order record to provide a unique common id for all the items selected
+                    //first, I created an order record to provide a unique common id for the items selected
 
                     Order neworder = new() {DateofOrder = DateTime.Now };
                     _dbcontext.orders.Add(neworder);
 
                     _dbcontext.SaveChanges();
 
-                    var lastOrderId = _dbcontext.orders.ToList().LastOrDefault().OrderID;
+                    var lastOrderId = _dbcontext.orders.OrderBy(o => o.OrderID).ToList().LastOrDefault().OrderID;
 
                     foreach (var item in order)
                     {
