@@ -32,7 +32,7 @@ namespace letsprint.Controllers
 
             if (orderdetails == null)
             {
-                return NotFound();
+                return NotFound(new { message = "The OrderID you entered is not found."});
             }
             return Ok(orderdetails);
         }
@@ -57,7 +57,7 @@ namespace letsprint.Controllers
                 return CreatedAtRoute("GetByID", new { OrderID = orderid }, order);
                 
             }
-
+            
             return BadRequest();
         }
     }

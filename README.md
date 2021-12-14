@@ -1,6 +1,6 @@
 /* A quick and important note: for the purpose of this project, Albelli has five product types: photoBook, calendar, canvas, set of greeting cards and mug.
-I have implemented this types as enums. Hence, when running this project on Swagger, ensure that the ProductType you enter is between 0 - 4. It does not
-accept a string or anything above 4. Well, I already implemented checks to guard against bad data. So... It's up to you.*/
+I have implemented these types as enums. Hence, when running this project on Swagger, ensure that the ProductType you enter is between 0 - 4. It does not
+accept a string or anything above 4. Well, I already implemented checks to guard against bad data. So... */
 
 
 # letsprint

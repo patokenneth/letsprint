@@ -102,7 +102,7 @@ namespace letsprint.Infrastructure.Repository
                 var requiredBinWidth = AllOrderItems.Sum(b => b.RequiredBinWidth) + "mm";
                 
                 //return the orders with the required bin width
-                return AllOrderItems.Select(a => new OrderDetailsViewModel { orders = orderdeets, RequiredBinWith = requiredBinWidth}).FirstOrDefault();
+                return AllOrderItems.Select(a => new OrderDetailsViewModel { orders = orderdeets, RequiredBinWidth = requiredBinWidth}).FirstOrDefault();
 
             }
             
