@@ -11,7 +11,7 @@ namespace letsprint.Model
     public class Order
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int OrderID { get; set; }
+        public Int64 OrderID { get; set; }
 
         public DateTime DateofOrder { get; set; }
 

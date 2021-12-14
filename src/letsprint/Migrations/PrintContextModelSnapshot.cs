@@ -21,9 +21,9 @@ namespace letsprint.Migrations
 
             modelBuilder.Entity("letsprint.Model.Order", b =>
                 {
-                    b.Property<int>("OrderID")
+                    b.Property<long>("OrderID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
                     b.Property<DateTime>("DateofOrder")
@@ -36,15 +36,16 @@ namespace letsprint.Migrations
 
             modelBuilder.Entity("letsprint.Model.OrderDetails", b =>
                 {
-                    b.Property<int>("ItemID")
+                    b.Property<long>("ItemID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("bigint")
                         .UseIdentityColumn();
 
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
+                    b.Property<long>("OrderID")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("ProductType")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 

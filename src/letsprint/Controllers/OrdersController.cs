@@ -21,7 +21,7 @@ namespace letsprint.Controllers
         }
 
         [HttpGet(template: "{OrderID}", Name = "GetByID")]
-        public IActionResult GetOrderByID(int OrderID)
+        public IActionResult GetOrderByID(Int64 OrderID)
         {
             if (OrderID < 0)
             {

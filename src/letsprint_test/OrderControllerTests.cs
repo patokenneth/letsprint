@@ -81,11 +81,7 @@ namespace letsprint_test
 
 
 
-
-
-
-
-        private OrderDetailsViewModel GetOrderDetails(int OrderID)
+        private OrderDetailsViewModel GetOrderDetails(Int64 OrderID)
         {
             List<OrderDetails> allOrderItems = new List<OrderDetails>
             {

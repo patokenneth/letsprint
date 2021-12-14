@@ -11,16 +11,20 @@ namespace letsprint.Model
     public class OrderDetails
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ItemID { get; set; }
+        public Int64 ItemID { get; set; }
 
         [StringLength(50)]
+        [Required]
         public string ProductType { get; set; }
 
+        [Required]
         public int Quantity { get; set; }
-
+        
+        [Required]
         public double RequiredBinWidth { get; set; }
 
-        public int OrderID { get; set; }
+        [Required]
+        public Int64 OrderID { get; set; }
 
         public Order Order { get; set; }
     }
