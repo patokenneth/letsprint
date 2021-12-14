@@ -105,7 +105,7 @@ namespace letsprint_test
 
             var requiredBinWidth = allOrderItems.Where(i => i.OrderID == OrderID).Sum(b => b.RequiredBinWidth) + "mm";
 
-            return allOrderItems.Select(a => new OrderDetailsViewModel { orders = orderdeets, RequiredBinWith = requiredBinWidth }).FirstOrDefault();
+            return allOrderItems.Select(a => new OrderDetailsViewModel { orders = orderdeets, RequiredBinWidth = requiredBinWidth }).FirstOrDefault();
 
 
         }
