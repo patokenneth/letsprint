@@ -9,21 +9,27 @@ namespace letsprint.Utility
     {
         public static double CalculateWidth(ProductType name, int quantity)
         {
+            //implemented for test purpose
+            if (!Enum.IsDefined(typeof(ProductType), name))
+            {
+                throw new NotImplementedException();
+            }
+
             switch (name)
             {
-                case ProductType.photoBook:
+                case ProductType.PhotoBook:
                     return 19 * quantity;
                    
-                case ProductType.calendar:
+                case ProductType.Calendar:
                     return 10 * quantity;
                    
-                case ProductType.canvas:
+                case ProductType.Canvas:
                     return 16 * quantity;
                     
-                case ProductType.cards:
+                case ProductType.Cards:
                     return 4.7 * quantity;
                     
-                case ProductType.mug:
+                case ProductType.Mug:
                     return 94 * Math.Ceiling((Double)quantity/4);
                 default:
                     break;

@@ -7,10 +7,10 @@ namespace letsprint.Utility
 {
     public enum ProductType
     {
-        photoBook = 0,
-        calendar = 1,
-        canvas = 2,
-        cards = 3,
-        mug = 4
+        PhotoBook = 0,
+        Calendar = 1,
+        Canvas = 2,
+        Cards = 3,
+        Mug = 4
     }
 }
