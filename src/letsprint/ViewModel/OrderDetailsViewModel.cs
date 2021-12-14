@@ -11,6 +11,6 @@ namespace letsprint.ViewModel
     {
         public List<ViewOrder> orders { get; set; }
 
-        public string RequiredBinWith { get; set; }
+        public string RequiredBinWidth { get; set; }
     }
 }
