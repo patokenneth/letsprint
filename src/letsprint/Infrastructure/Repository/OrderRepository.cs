@@ -22,7 +22,7 @@ namespace letsprint.Infrastructure.Repository
         }
 
         
-        public async Task<int> CreateItem(CreateOrderViewModel[] order)
+        public async Task<Int64> CreateItem(CreateOrderViewModel[] order)
         {
             using (var transaction = _dbcontext.Database.BeginTransaction())
             {
@@ -78,7 +78,7 @@ namespace letsprint.Infrastructure.Repository
 
         }
 
-        public OrderDetailsViewModel ViewOrder(int OrderID)
+        public OrderDetailsViewModel ViewOrder(Int64 OrderID)
         {
             //check if there is an order record with the given OrderID
 
