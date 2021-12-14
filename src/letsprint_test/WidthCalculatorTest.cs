@@ -10,7 +10,7 @@ namespace letsprint_test
         public void WidthCalculator_Returns_RequiredBinWidth()
         {
             //Arrange
-            var producttype = ProductType.Mug;
+            var producttype = ProductType.mug;
             var quantity = 9;
 
             //Act
@@ -25,7 +25,7 @@ namespace letsprint_test
         public void WidthCalculator_ReturnsZero_When_QuantityisZero()
         {
             //Arrange
-            var producttype = ProductType.PhotoBook;
+            var producttype = ProductType.photoBook;
             var quantity = 0;
 
             //Act
