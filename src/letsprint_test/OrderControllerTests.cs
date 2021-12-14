@@ -52,7 +52,7 @@ namespace letsprint_test
             IActionResult actionResult = controller.GetOrderByID(4);
            
             //Assert
-            Assert.IsType<Microsoft.AspNetCore.Mvc.NotFoundResult>(actionResult);
+            Assert.IsType<Microsoft.AspNetCore.Mvc.NotFoundObjectResult>(actionResult);
             
            
         }
