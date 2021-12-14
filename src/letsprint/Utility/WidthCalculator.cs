@@ -38,7 +38,7 @@ namespace letsprint.Utility
                     break;
             }
 
-            return binwidth;
+            return Math.Round(binwidth, 2);
         }
     }
 }
