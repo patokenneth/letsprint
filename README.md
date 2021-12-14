@@ -2,6 +2,9 @@
 I have implemented these types as enums. Hence, when running this project on Swagger, ensure that the ProductType you enter is between 0 - 4. It does not
 accept a string or anything above 4. Well, I already implemented checks to guard against bad data. So... */
 
+//Also very important: since I did not seed data in the database, kindly run migration (both the Add-Migration and Update-Database commands) to ensure that the
+database is created.
+
 
 # letsprint
 This is a project I created for Albelli .NET position.
@@ -14,7 +17,7 @@ the ability to retrieve the order details using the OrderID.
 
 ## Getting Started
 This project is on my github repo and has two branches: main and Dev. Start by cloning the main branch of the repo. Afterwards, restore the NuGet packages 
-and run migration (that is, add-migration --name). The solution has two projects: the main project called letsprint and the test project named letsprint_test.
+and run migration (both the add-migration and update-database commands). The solution has two projects: the main project called letsprint and the test project named letsprint_test.
 If you have followed the instructions above, the solution should start up on swagger when you run it.
 
 ### Dependencies
